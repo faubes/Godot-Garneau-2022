@@ -1,0 +1,28 @@
+
+Notes
+
+Questions-réponses 5 minutes
+
+Introduction
+C'est quoi Godot? Qu'est-ce qu'un _engin_ de jeu vidéo? Connaissez-vous les autres engins importants dans le marché?
+Peut-être connaissez-vous le jeu Fortnite, et l'engin Unreal sur lequel le jeu est bâti?
+
+Un engin de jeu vidéo, c'est un outil qui permet de créer des jeux vidéos plus rapidement. Les concepteurs des engins ont déjà programmé plusieurs des trucs compliqués pour nous: comment dessiner à l'écran, comment simuler la lumière et la gravité, comment capter les boutons d'une manette.
+
+Godot c'est un engin facile et amusant à utiliser. Godot c'est ausi un projet à source libre, ce qui veut dire que 
+
+(1) l'engin est gratuit. Contrairement à Unity et Unreal, il n'y a pas de licence ou de royautés à payer pour publier un jeu, et
+(2) le code de l'engin est disponbile à tous pour vérification et modification (avancé!)
+
+Tout devrait être prêt pour vous sur vos machines. Il faut juste cliquer sur l'icône du Robot bleu sur le bureau pour ouvrir Godot. 
+
+La première fenêtre sert à naviguer entre différent projets.
+
+Ouvrir projet
+
+Les différentes fenêtres de l'engin:
+
+- La scène
+- Les fichiers
+- L'inspecteur
+- L'espace de travail
