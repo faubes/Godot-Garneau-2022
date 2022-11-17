@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character/BasePlayer.gd"
 }, {
-"base": "Node2D",
+"base": "TextureRect",
 "class": "Heart",
 "language": "GDScript",
 "path": "res://Character/Health/Heart.gd"

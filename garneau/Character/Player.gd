@@ -6,10 +6,12 @@ var GreenPlayer := preload("res://Character/GreenPlayer.tscn")
 var PinkPlayer := preload("res://Character/PinkPlayer.tscn")
 var StartLocation
 
+signal took_damage
 
 func _ready():
 	StartLocation = self.position
 	swap_player(GreenPlayer)
+	connect("took_damage", $Camera2D/CanvasLayer/HealthBar, "take_damage")
 
 func swap_player(NewPlayer : Resource):
 	var prev_transform : Transform = self.transform
@@ -48,4 +50,5 @@ func _physics_process(delta):
 
 
 func _on_SafeZone_body_exited(_body):
+	emit_signal("took_damage")
 	CurrentPlayer.set_position(StartLocation)
