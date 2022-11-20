@@ -8,10 +8,14 @@ var StartLocation
 
 signal took_damage
 
+
 func _ready():
 	StartLocation = self.position
 	swap_player(GreenPlayer)
-	connect("took_damage", $Camera2D/CanvasLayer/HealthBar, "take_damage")
+	var err = connect("took_damage", $Camera2D/CanvasLayer/HealthBar, "take_damage")
+	if err:
+		print(err)
+
 
 func swap_player(NewPlayer : Resource):
 	var prev_transform : Transform = self.transform
@@ -24,7 +28,7 @@ func swap_player(NewPlayer : Resource):
 	CurrentPlayer.set_as_toplevel(true)
 	CurrentPlayer.set_transform(prev_transform)
 
-	
+
 func switch_alien() -> bool:
 	if Input.is_action_pressed("ui_focus_next"):
 		if Input.is_action_just_pressed("ui_right"):
@@ -40,7 +44,9 @@ func switch_alien() -> bool:
 				swap_player(PinkPlayer)
 				return true
 	return false
-	
+
+
+
 func _physics_process(delta):
 	
 	if switch_alien():
@@ -49,6 +55,9 @@ func _physics_process(delta):
 	CurrentPlayer.physics_process(delta)
 
 
-func _on_SafeZone_body_exited(_body):
-	emit_signal("took_damage")
-	CurrentPlayer.set_position(StartLocation)
+func _on_SafeZone_body_exited(body):
+	if body == CurrentPlayer:
+		emit_signal("took_damage")
+		CurrentPlayer.set_position(StartLocation)
+
+

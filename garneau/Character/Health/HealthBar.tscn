@@ -3,23 +3,22 @@
 [ext_resource path="res://Character/Health/HealthBar.gd" type="Script" id=2]
 
 [node name="HealthBar" type="MarginContainer"]
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+margin_left = -140.0
+margin_bottom = 50.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 492.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 472, 260 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 135.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 80, 20 )
 custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false

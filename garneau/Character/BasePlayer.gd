@@ -66,3 +66,7 @@ func physics_process(delta):
 		else:
 			AnimationPlayer.play("idle")
 	
+func pickup(o):
+	o.get_parent().call_deferred("remove_child", o)
+	call_deferred("add_child", o)
+	o.position = o.carry_height * Vector2.UP

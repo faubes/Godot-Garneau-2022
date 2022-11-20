@@ -9,8 +9,7 @@ var hearts : Array
 var current_heart : Heart
 
 func _ready():
-	for i in range(MAX_HEARTS):
-		print("Heart" + str(i))
+	for _i in range(MAX_HEARTS):
 		var new_heart = heart.instance()
 		hearts.append(new_heart)
 		$HBoxContainer.add_child(new_heart)
@@ -22,7 +21,7 @@ func take_damage():
 	if current_health < 0:
 		print("arrrrr")
 		return
-	var current_heart = hearts.front()
+	current_heart = hearts.front()
 	if current_heart.is_empty():
 		hearts.append(hearts.pop_front())
 		current_heart = hearts.front()

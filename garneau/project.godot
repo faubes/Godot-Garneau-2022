@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Heart",
 "language": "GDScript",
 "path": "res://Character/Health/Heart.gd"
+}, {
+"base": "Area2D",
+"class": "Key",
+"language": "GDScript",
+"path": "res://Items/Key.gd"
 } ]
 _global_script_class_icons={
 "BasePlayer": "",
-"Heart": ""
+"Heart": "",
+"Key": ""
 }
 
 [application]
