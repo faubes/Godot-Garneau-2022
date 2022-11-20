@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="cottage2022"
+config/name="Garneau2022"
 config/description="using kenney's pixel platformer tiles"
 run/main_scene="res://Maps/World1.tscn"
 config/icon="res://kenney_pixelplatformer/Characters/character_0014.png"
