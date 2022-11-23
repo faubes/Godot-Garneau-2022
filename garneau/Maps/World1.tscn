@@ -3,11 +3,11 @@
 [ext_resource path="res://Tilemaps/background_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Maps/world1_safezone_rectangleshape2d.tres" type="Shape2D" id=4]
+[ext_resource path="res://Maps/SafeZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Items/Key.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=6]
 
-[node name="Node2D" type="Node2D"]
+[node name="World1" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -50,11 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SafeZone" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZone"]
-shape = ExtResource( 4 )
+[node name="SafeZone" parent="." instance=ExtResource( 4 )]
 
 [node name="Key" parent="." instance=ExtResource( 5 )]
 position = Vector2( 229, 450 )
@@ -62,4 +58,5 @@ position = Vector2( 229, 450 )
 [node name="LockedDoor" parent="." instance=ExtResource( 6 )]
 position = Vector2( 491, 455 )
 
-[connection signal="body_exited" from="SafeZone" to="Player" method="_on_SafeZone_body_exited"]
+[node name="Key2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 200, 400 )
