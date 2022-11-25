@@ -25,7 +25,7 @@ var dead := false
 signal took_damage(dmg)
 signal healed_damage(dmg)
 signal death
-
+signal spawned
 
 func _ready():
 	$Camera2D.current = true
@@ -88,11 +88,19 @@ func take_damage(i):
 func heal_damage(i):
 	emit_signal("healed_damage", i)
 
+func spawn():
+	emit_signal("spawned")
+	print("spawned!")
+	AnimationPlayer.play("spawn")
 
 func die():
 	print("died!")
 	dead = true
 	AnimationPlayer.play("death")
+	
 
 func _on_Death_Anim_Finished():
 	emit_signal("death")
+
+func _on_Spawn_Anim_Finished():
+	dead = false

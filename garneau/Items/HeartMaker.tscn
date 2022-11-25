@@ -2,12 +2,13 @@
 
 [ext_resource path="res://Items/ThingMaker.gd" type="Script" id=1]
 [ext_resource path="res://kenney_pixelplatformer/Tiles/tile_0011.png" type="Texture" id=2]
-[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/HeartPickup.tscn" type="PackedScene" id=3]
 
-[node name="CoinMaker" type="Sprite"]
+[node name="HeartMaker" type="Sprite"]
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 thing = ExtResource( 3 )
+max_things = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25

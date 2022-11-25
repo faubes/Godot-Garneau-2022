@@ -21,7 +21,7 @@ position = Vector2( 536, 488 )
 
 [node name="LockedDoor" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 736, 472 )
-next_world = 10
+next_world = 9
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 248, 456 )

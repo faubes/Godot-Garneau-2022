@@ -15,7 +15,6 @@ func physics_process(delta):
 	if not in_air:
 		horizontal_scalar = GROUND_HORIZONTAL_SCALAR
 		if Input.is_action_pressed("ui_accept"):
-			#in_air = true
 			AnimationPlayer.play("jump")
 			velocity += Vector2.UP * JUMP_HEIGHT
 			snap = Vector2.ZERO

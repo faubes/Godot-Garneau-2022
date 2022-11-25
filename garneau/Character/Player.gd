@@ -61,19 +61,19 @@ func switch_alien() -> bool:
 
 func _physics_process(delta):
 	
-	if switch_alien():
-		return
-	
 	if CurrentPlayer.dead:
 		return
-	
+
+	if switch_alien():
+		return
+		
 	CurrentPlayer.physics_process(delta)
 
 
 func respawn():
-	CurrentPlayer.set_position(StartLocation)
-	CurrentPlayer.dead = false
 	HealthBar.set_max_hearts(max_hearts)
+	CurrentPlayer.set_position(StartLocation)
+	CurrentPlayer.spawn()
 
 func take_damage(var i):
 	HealthBar.take_damage(i)

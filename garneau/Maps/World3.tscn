@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Items/CoinMaker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Items/Box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Areas/SafeZone.tscn" type="PackedScene" id=7]
 
 [node name="World3" type="Node2D"]
 
@@ -36,7 +37,7 @@ margin_bottom = 568.0
 text = "Les <RigidBody> simulent les forces de la mécanique classique comme la gravité et les collisions"
 
 [node name="CoinMaker" parent="." instance=ExtResource( 4 )]
-position = Vector2( 272, 416 )
+position = Vector2( 272, 472 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 184, 432 )
@@ -48,3 +49,6 @@ margin_right = 307.0
 margin_bottom = 536.0
 rect_pivot_offset = Vector2( 397, -109 )
 text = "World 3 - RigidBody"
+
+[node name="SafeZone" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 432 )
