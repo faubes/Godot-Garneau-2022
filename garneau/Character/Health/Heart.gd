@@ -29,7 +29,7 @@ func take_damage():
 	print("Empty heart took damage!?")
 	
 
-func heal():
+func heal_damage():
 	if Fullness == 1:
 		Fullness = 2
 		texture.current_frame = 2

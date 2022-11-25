@@ -1,12 +1,44 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Key.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Monster/Bonk.tscn" type="PackedScene" id=4]
+[ext_resource path="res://kenney_pixelplatformer/garneau_logo.jpg" type="Texture" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
 
-[node name="World3" type="Node2D"]
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Spin"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
+}
+
+[node name="World4" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -19,17 +51,24 @@ position = Vector2( 376, 440 )
 
 [node name="LockedDoor" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 440, 472 )
-next_world = 4
+next_world = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 128.0
 margin_top = 496.0
 margin_right = 392.0
 margin_bottom = 568.0
-text = "Un KinematicBody permet de controller le  movement dans le code"
+text = "Un Sprite affiche un image, et un AnimationPlayer permet de creer et jouer des animations"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 184, 400 )
 
-[node name="Bonk" parent="." instance=ExtResource( 4 )]
-position = Vector2( 312, 440 )
+[node name="GarneauLogo" type="Sprite" parent="."]
+position = Vector2( 264, 360 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GarneauLogo"]
+autoplay = "Spin"
+anims/RESET = SubResource( 2 )
+anims/Spin = SubResource( 1 )

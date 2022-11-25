@@ -6,6 +6,9 @@ var GreenPlayer := preload("res://Character/GreenPlayer.tscn")
 var PinkPlayer := preload("res://Character/PinkPlayer.tscn")
 var StartLocation
 
+onready var HealthBar = $Camera2D/CanvasLayer/HealthBar
+export(int) var max_hearts = 4
+
 signal took_damage
 
 
@@ -15,6 +18,7 @@ func _ready():
 	var err = connect("took_damage", $Camera2D/CanvasLayer/HealthBar, "take_damage")
 	if err:
 		print(err)
+	HealthBar.set_max_hearts(max_hearts)
 
 
 func swap_player(NewPlayer : Resource):

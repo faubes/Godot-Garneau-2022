@@ -31,24 +31,22 @@ tile_data = PoolIntArray( 393796, 0, 65537, 393797, 0, 65539, 459330, 0, 65537, 
 position = Vector2( 183.853, 449.34 )
 
 [node name="Instructions" type="RichTextLabel" parent="."]
-margin_left = 31.0
-margin_top = 528.0
-margin_right = 237.0
-margin_bottom = 576.0
-text = "Hold TAB and press UP/DOWN/LEFT/RIGHT to switch characters"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 25.0
+margin_top = 517.0
+margin_right = 231.0
+margin_bottom = 717.0
+text = "Appuie sur TAB et utilise les directions pour changer de personnage
+
+Hold TAB and press UP/DOWN/LEFT/RIGHT to switch characters"
 
 [node name="Instructions2" type="RichTextLabel" parent="."]
-margin_left = 283.374
-margin_top = 532.302
-margin_right = 489.374
-margin_bottom = 580.302
-text = "Each alien has a unique movement ability"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 339.0
+margin_top = 512.0
+margin_right = 545.0
+margin_bottom = 712.0
+text = "Frappe SPACE pour sauter; chaque personnage saute différement.
+
+Each alien has a unique movement ability"
 
 [node name="SafeZone" parent="." instance=ExtResource( 4 )]
 
