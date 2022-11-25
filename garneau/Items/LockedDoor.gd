@@ -10,7 +10,7 @@ func _on_LockedDoor_body_entered(body):
 		for child in children:
 			var key = child as Key
 			if key:
-				print("open!")
+				#print("open!")
 				WorldManager.load_level(next_world)
 				key.queue_free()
 

@@ -20,16 +20,22 @@ var horizontal_scalar : float = 1
 var in_air := true
 var fast_fall := true
 
+
+signal took_damage(dmg)
+
+
 func _ready():
 	$Camera2D.current = true
 	velocity = move_and_slide_with_snap(Vector2.RIGHT, snap, Vector2.UP)
 	apply_gravity = true
 	
+
 func get_input() -> Vector2 :
 	return Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"))
-		
+
+
 func physics_process(delta):
 	var input_velocity = velocity.move_toward(get_input()*SPEED, ACCEL*delta)
 	
@@ -70,3 +76,7 @@ func pickup(o):
 	o.get_parent().call_deferred("remove_child", o)
 	call_deferred("add_child", o)
 	o.position = o.carry_height * Vector2.UP
+
+
+func take_damage(i):
+	emit_signal("took_damage", i)

@@ -12,6 +12,3 @@ expand = true
 stretch_mode = 4
 flip_h = true
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}

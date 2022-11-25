@@ -8,7 +8,7 @@
 resource_local_to_scene = true
 flags = 4
 frames = 3
-oneshot = true
+pause = true
 frame_0/texture = ExtResource( 1 )
 frame_0/delay_sec = 1.0
 frame_1/texture = ExtResource( 2 )

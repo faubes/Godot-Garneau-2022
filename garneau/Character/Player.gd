@@ -1,4 +1,5 @@
 extends Node2D
+class_name Player
 
 var CurrentPlayer : BasePlayer
 var BluePlayer := preload("res://Character/BluePlayer.tscn")
@@ -9,28 +10,31 @@ var StartLocation
 onready var HealthBar = $Camera2D/CanvasLayer/HealthBar
 export(int) var max_hearts = 4
 
-signal took_damage
-
 
 func _ready():
 	StartLocation = self.position
 	swap_player(GreenPlayer)
-	var err = connect("took_damage", $Camera2D/CanvasLayer/HealthBar, "take_damage")
-	if err:
-		print(err)
 	HealthBar.set_max_hearts(max_hearts)
 
 
 func swap_player(NewPlayer : Resource):
 	var prev_transform : Transform = self.transform
+	var new_player = NewPlayer.instance()
 	if CurrentPlayer:
+		for child in CurrentPlayer.get_children():
+			if child is Key:
+				new_player.pickup(child)
 		prev_transform = CurrentPlayer.transform
 		remove_child(CurrentPlayer)
+		CurrentPlayer.queue_free()
 		
-	CurrentPlayer = NewPlayer.instance()
-	add_child(CurrentPlayer)
-	CurrentPlayer.set_as_toplevel(true)
-	CurrentPlayer.set_transform(prev_transform)
+	new_player.set_as_toplevel(true)
+	new_player.set_transform(prev_transform)
+	add_child(new_player)
+	CurrentPlayer = new_player
+	var err = CurrentPlayer.connect("took_damage", self, "take_damage")
+	if err:
+		print(err)
 
 
 func switch_alien() -> bool:
@@ -59,9 +63,10 @@ func _physics_process(delta):
 	CurrentPlayer.physics_process(delta)
 
 
-func _on_SafeZone_body_exited(body):
-	if body == CurrentPlayer:
-		emit_signal("took_damage")
-		CurrentPlayer.set_position(StartLocation)
+func respawn():
+	take_damage(1)
+	CurrentPlayer.set_position(StartLocation)
 
 
+func take_damage(var i):
+	HealthBar.take_damage(i)

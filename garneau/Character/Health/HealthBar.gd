@@ -15,6 +15,8 @@ func set_max_hearts(new_max_hearts):
 	max_hearts = new_max_hearts
 	for child in $HBoxContainer.get_children():
 		$HBoxContainer.remove_child(child)
+		hearts = []
+		child.queue_free()
 	for _i in range(max_hearts):
 		var new_heart = heart.instance()
 		hearts.append(new_heart)
@@ -24,13 +26,21 @@ func set_max_hearts(new_max_hearts):
 func set_health(i):
 	if (current_health < i):
 		while (current_health < i):
-			heal_damage()
+			heal()
 	elif (current_health > i):
 		while (current_health > i):
-			take_damage()
+				hurt()
 
 
-func heal_damage():
+func take_damage(i):
+	set_health(current_health - i)
+
+	
+func heal_damage(i):
+	set_health(current_health + i)
+
+
+func heal():
 	if current_health == max_hearts * 2: #already full
 		return
 	current_health = current_health + 1
@@ -41,7 +51,7 @@ func heal_damage():
 	current_heart.heal_damage()
 
 
-func take_damage():
+func hurt():
 	current_health = current_health - 1
 	if current_health < 0:
 		print("arrrrr")

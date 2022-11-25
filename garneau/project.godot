@@ -23,11 +23,23 @@ _global_script_classes=[ {
 "class": "Key",
 "language": "GDScript",
 "path": "res://Items/Key.gd"
+}, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Character/Player.gd"
+}, {
+"base": "Sprite",
+"class": "Spikes",
+"language": "GDScript",
+"path": "res://Monster/Spikes.gd"
 } ]
 _global_script_class_icons={
 "BasePlayer": "",
 "Heart": "",
-"Key": ""
+"Key": "",
+"Player": "",
+"Spikes": ""
 }
 
 [application]

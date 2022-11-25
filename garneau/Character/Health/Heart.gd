@@ -21,10 +21,12 @@ func take_damage():
 	if Fullness == 2:
 		Fullness = 1
 		texture.current_frame = 1
+		print("set frame 1")
 		return
 	if Fullness == 1:
 		Fullness = 0
 		texture.current_frame = 0
+		print("set frame 0")
 		return
 	print("Empty heart took damage!?")
 	
