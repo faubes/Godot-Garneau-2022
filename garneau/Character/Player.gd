@@ -35,6 +35,9 @@ func swap_player(NewPlayer : Resource):
 	var err = CurrentPlayer.connect("took_damage", self, "take_damage")
 	if err:
 		print(err)
+	err = CurrentPlayer.connect("healed_damage", self, "heal_damage")
+	if err:
+		print(err)
 
 
 func switch_alien() -> bool:
@@ -70,3 +73,7 @@ func respawn():
 
 func take_damage(var i):
 	HealthBar.take_damage(i)
+	
+func heal_damage(var i):
+	HealthBar.heal_damage(i)
+	

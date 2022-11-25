@@ -22,7 +22,7 @@ var fast_fall := true
 
 
 signal took_damage(dmg)
-
+signal healed_damage(dmg)
 
 func _ready():
 	$Camera2D.current = true
@@ -80,3 +80,6 @@ func pickup(o):
 
 func take_damage(i):
 	emit_signal("took_damage", i)
+
+func heal_damage(i):
+	emit_signal("healed_damage", i)
