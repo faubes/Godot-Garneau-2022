@@ -8,7 +8,7 @@ var can_land := true
 
 func _ready():
 	$FlipTimer.wait_time = 0.5
-	AnimationPlayer = $PinkPlayer
+	AnimationPlayer = $AnimationPlayer
 	$Camera2D.current = true
 	apply_gravity = false
 	

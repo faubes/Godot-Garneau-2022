@@ -1,7 +1,69 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://kenney_pixelplatformer/Tilemap/characters_packed.png" type="Texture" id=1]
 [ext_resource path="res://Character/PinkPlayer.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "death"
+length = 3.0
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_Death_Anim_Finished"
+} ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3 )
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -57,7 +119,9 @@ height = 6.0
 position = Vector2( 0, -12 )
 script = ExtResource( 2 )
 
-[node name="PinkPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/death = SubResource( 5 )
 anims/idle = SubResource( 1 )
 anims/jump = SubResource( 2 )
 anims/walk = SubResource( 3 )
@@ -68,10 +132,9 @@ shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.32196, 1.28783 )
-scale = Vector2( 0.991057, 1.32196 )
 texture = ExtResource( 1 )
-vframes = 3
 hframes = 9
+vframes = 3
 frame = 4
 region_enabled = true
 region_rect = Rect2( 0, 0, 216, 73 )
@@ -79,4 +142,5 @@ region_rect = Rect2( 0, 0, 216, 73 )
 [node name="FlipTimer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="timeout" from="FlipTimer" to="." method="_on_FlipTimer_timeout"]

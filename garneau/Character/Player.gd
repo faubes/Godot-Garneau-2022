@@ -8,7 +8,7 @@ var PinkPlayer := preload("res://Character/PinkPlayer.tscn")
 var StartLocation
 
 onready var HealthBar = $Camera2D/CanvasLayer/HealthBar
-export(int) var max_hearts = 4
+export(int) var max_hearts = 2
 
 
 func _ready():
@@ -38,6 +38,7 @@ func swap_player(NewPlayer : Resource):
 	err = CurrentPlayer.connect("healed_damage", self, "heal_damage")
 	if err:
 		print(err)
+	err = CurrentPlayer.connect("death", self, "die")
 
 
 func switch_alien() -> bool:
@@ -62,18 +63,25 @@ func _physics_process(delta):
 	
 	if switch_alien():
 		return
-
+	
+	if CurrentPlayer.dead:
+		return
+	
 	CurrentPlayer.physics_process(delta)
 
 
 func respawn():
-	take_damage(1)
 	CurrentPlayer.set_position(StartLocation)
-
+	CurrentPlayer.dead = false
+	HealthBar.set_max_hearts(max_hearts)
 
 func take_damage(var i):
 	HealthBar.take_damage(i)
+	if HealthBar.current_health == 0:
+		CurrentPlayer.die()
 	
 func heal_damage(var i):
 	HealthBar.heal_damage(i)
 	
+func die():
+	respawn()

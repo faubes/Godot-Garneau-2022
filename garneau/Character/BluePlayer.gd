@@ -5,7 +5,7 @@ export var TELEPORT_RANGE = 100
 onready var TeleportParticle = $TeleportParticle
 
 func _ready():
-	AnimationPlayer = $BluePlayer
+	AnimationPlayer = $AnimationPlayer
 	TeleportParticle.set_emitting(false)
 	$Camera2D.current = true
 			
@@ -24,3 +24,5 @@ func physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		TeleportParticle.set_emitting(false)
 		set_position(position + TELEPORT_RANGE * input)
+
+

@@ -23,6 +23,7 @@ func set_max_hearts(new_max_hearts):
 		hearts[i] = new_heart
 		$HBoxContainer.add_child(new_heart)
 	current_heart_index = 0
+	current_health = max_hearts * 2
 
 
 func set_health(i):

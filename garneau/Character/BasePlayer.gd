@@ -19,10 +19,13 @@ var horizontal_scalar : float = 1
 
 var in_air := true
 var fast_fall := true
+var dead := false
 
 
 signal took_damage(dmg)
 signal healed_damage(dmg)
+signal death
+
 
 func _ready():
 	$Camera2D.current = true
@@ -71,7 +74,8 @@ func physics_process(delta):
 			AnimationPlayer.play("walk")
 		else:
 			AnimationPlayer.play("idle")
-	
+
+
 func pickup(o):
 	o.get_parent().call_deferred("remove_child", o)
 	call_deferred("add_child", o)
@@ -83,3 +87,12 @@ func take_damage(i):
 
 func heal_damage(i):
 	emit_signal("healed_damage", i)
+
+
+func die():
+	print("died!")
+	dead = true
+	AnimationPlayer.play("death")
+
+func _on_Death_Anim_Finished():
+	emit_signal("death")
