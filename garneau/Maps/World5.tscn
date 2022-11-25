@@ -20,7 +20,7 @@ position = Vector2( 376, 440 )
 
 [node name="LockedDoor" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 440, 472 )
-next_world = 5
+next_world = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 128.0

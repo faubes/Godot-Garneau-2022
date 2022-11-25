@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity := Vector2.ZERO
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	velocity += 9.8 * Vector2.DOWN # gravity
 	

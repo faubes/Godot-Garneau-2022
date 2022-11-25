@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -38,9 +38,87 @@ tracks/0/keys = {
 "values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
 }
 
-[node name="World5" type="Node2D"]
+[sub_resource type="Animation" id=3]
+resource_name = "Grow"
+length = 2.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Spin"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
+}
+
+[node name="World6" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -53,6 +131,9 @@ position = Vector2( 536, 488 )
 position = Vector2( 736, 472 )
 next_world = 10
 
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 184, 400 )
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 128.0
 margin_top = 496.0
@@ -60,8 +141,13 @@ margin_right = 392.0
 margin_bottom = 568.0
 text = "Un Sprite affiche un image, et un AnimationPlayer permet de creer et jouer des animations"
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 184, 400 )
+[node name="WorldText" type="RichTextLabel" parent="."]
+margin_left = 144.867
+margin_top = 351.432
+margin_right = 298.867
+margin_bottom = 389.432
+rect_pivot_offset = Vector2( 397, -109 )
+text = "World 6 - Animation Player"
 
 [node name="GarneauLogo" type="Sprite" parent="."]
 position = Vector2( 532, 357 )
@@ -73,10 +159,14 @@ autoplay = "Spin"
 anims/RESET = SubResource( 2 )
 anims/Spin = SubResource( 1 )
 
-[node name="WorldText" type="RichTextLabel" parent="."]
-margin_left = 20.0
-margin_top = 355.0
-margin_right = 174.0
-margin_bottom = 393.0
-rect_pivot_offset = Vector2( 397, -109 )
-text = "World 6 - Animation Player"
+[node name="GarneauLogo2" type="Sprite" parent="."]
+position = Vector2( 822.167, 355.216 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GarneauLogo2"]
+autoplay = "Spin"
+anims/Grow = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/Spin = SubResource( 5 )
