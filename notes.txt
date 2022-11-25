@@ -26,3 +26,12 @@ Les différentes fenêtres de l'engin:
 - Les fichiers
 - L'inspecteur
 - L'espace de travail
+
+- Objets et propriétés
+- Transformations: position, rotation, taille
+- Manipulation avec Interface graphique:
+- Sélectionner, ouvrir menu
+- Glisser la caméra, bouger un objet
+- Monde 7: La lumière
+- Monde 8: Démo position, plan cartésien
+- Monde 9: ? Navigation -- trop complexe.
