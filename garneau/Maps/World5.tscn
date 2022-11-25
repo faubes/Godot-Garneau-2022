@@ -1,44 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Key.tscn" type="PackedScene" id=3]
-[ext_resource path="res://kenney_pixelplatformer/garneau_logo.jpg" type="Texture" id=4]
+[ext_resource path="res://Audio/OutThere.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://kenney_pixelplatformer/Tiles/note.png" type="Texture" id=6]
 
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "Spin"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
-}
-
-[node name="World4" type="Node2D"]
+[node name="World5" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -58,17 +27,24 @@ margin_left = 128.0
 margin_top = 496.0
 margin_right = 392.0
 margin_bottom = 568.0
-text = "Un Sprite affiche un image, et un AnimationPlayer permet de creer et jouer des animations"
+text = "Les AudioStreamPlayers jouent les sons et la musique. Le volume diminue avec la dsitance."
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 184, 400 )
 
-[node name="GarneauLogo" type="Sprite" parent="."]
-position = Vector2( 264, 360 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 256, 464 )
+stream = ExtResource( 4 )
+autoplay = true
+max_distance = 40.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GarneauLogo"]
-autoplay = "Spin"
-anims/RESET = SubResource( 2 )
-anims/Spin = SubResource( 1 )
+[node name="Sprite" type="Sprite" parent="AudioStreamPlayer2D"]
+texture = ExtResource( 6 )
+
+[node name="WorldText" type="RichTextLabel" parent="."]
+margin_left = 75.0
+margin_top = 377.0
+margin_right = 350.0
+margin_bottom = 577.0
+rect_pivot_offset = Vector2( 397, -109 )
+text = "World 5 - Audio"

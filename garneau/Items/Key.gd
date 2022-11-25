@@ -7,6 +7,6 @@ func _on_Key_body_entered(body):
 	print("collision")
 	var player = body as BasePlayer
 	if player:
-		$CollisionShape2D.disabled = true
+		#$CollisionShape2D.disabled = true
 		$AnimationPlayer.play("Spin")
 		player.pickup(self)
