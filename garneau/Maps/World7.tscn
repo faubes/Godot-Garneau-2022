@@ -20,13 +20,17 @@ position = Vector2( 536, 488 )
 
 [node name="LockedDoor" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 736, 472 )
-next_world = 10
+next_world = 8
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 184, 400 )
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.207843, 0.176471, 0.176471, 1 )
+
 [node name="WorldText" type="RichTextLabel" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
+light_mask = 2
 margin_left = 144.0
 margin_top = 368.0
 margin_right = 298.0
@@ -35,12 +39,21 @@ rect_pivot_offset = Vector2( 397, -109 )
 text = "World 7 - Light2D"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+self_modulate = Color( 0.423529, 0.572549, 0.678431, 1 )
+margin_left = 72.0
+margin_top = 400.0
+margin_right = 336.0
+margin_bottom = 472.0
+text = "Les <Light2Ds> ajoutent la lumière"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 145.353
-margin_top = 504.009
-margin_right = 409.353
-margin_bottom = 576.009
-text = "Les <Light2Ds> ajoutent la lumière et l'ombre."
+light_mask = 2
+margin_left = 472.0
+margin_top = 400.0
+margin_right = 736.0
+margin_bottom = 472.0
+text = "Le <CanvasModulate> permet de controller la noirceur du monde"
 
 [node name="GlowShroom" parent="." instance=ExtResource( 4 )]
 position = Vector2( 256, 472 )
@@ -59,6 +72,3 @@ position = Vector2( 664, 488 )
 
 [node name="GlowShroom5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 760, 456 )
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.207843, 0.176471, 0.176471, 1 )

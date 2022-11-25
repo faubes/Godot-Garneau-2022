@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 resource_name = "Grow"
 length = 2.0
 loop = true
@@ -63,58 +63,6 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2 )
 }
 
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:scale:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "Spin"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 90.0, 180.0, 270.0, 360.0 ]
-}
-
 [node name="World6" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -129,7 +77,7 @@ position = Vector2( 536, 488 )
 
 [node name="LockedDoor" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 736, 472 )
-next_world = 10
+next_world = 7
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 184, 400 )
@@ -165,8 +113,6 @@ scale = Vector2( 0.5, 0.5 )
 z_index = -1
 texture = ExtResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GarneauLogo2"]
-autoplay = "Spin"
-anims/Grow = SubResource( 3 )
-anims/RESET = SubResource( 4 )
-anims/Spin = SubResource( 5 )
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="GarneauLogo2"]
+autoplay = "Grow"
+anims/Grow = SubResource( 6 )
