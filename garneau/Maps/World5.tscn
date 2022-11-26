@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Audio/OutThere.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://kenney_pixelplatformer/Tiles/note.png" type="Texture" id=6]
+[ext_resource path="res://Maps/Areas/SafeZone.tscn" type="PackedScene" id=7]
 
 [node name="World5" type="Node2D"]
 
@@ -48,3 +49,6 @@ margin_right = 350.0
 margin_bottom = 577.0
 rect_pivot_offset = Vector2( 397, -109 )
 text = "World 5 - Audio"
+
+[node name="SafeZone" parent="." instance=ExtResource( 7 )]
+position = Vector2( 166.293, 259.03 )

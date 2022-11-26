@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Key.tscn" type="PackedScene" id=3]
 [ext_resource path="res://kenney_pixelplatformer/garneau_logo.jpg" type="Texture" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Areas/SafeZone.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -116,3 +117,6 @@ texture = ExtResource( 4 )
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="GarneauLogo2"]
 autoplay = "Grow"
 anims/Grow = SubResource( 6 )
+
+[node name="SafeZone" parent="." instance=ExtResource( 6 )]
+position = Vector2( 166.293, 259.03 )

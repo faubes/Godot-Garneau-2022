@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Particles/SnowParticle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Particles/FireParticle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Areas/SafeZone.tscn" type="PackedScene" id=7]
 
 [node name="World8" type="Node2D"]
 
@@ -49,3 +50,6 @@ position = Vector2( 480, 488 )
 
 [node name="SnowParticle" parent="." instance=ExtResource( 4 )]
 position = Vector2( 656, 360 )
+
+[node name="SafeZone" parent="." instance=ExtResource( 7 )]
+position = Vector2( 166.293, 259.03 )

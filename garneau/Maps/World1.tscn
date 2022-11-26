@@ -53,5 +53,4 @@ position = Vector2( 491, 455 )
 next_world = 2
 
 [node name="SafeZone" parent="." instance=ExtResource( 1 )]
-visible = true
 position = Vector2( 166.293, 259.03 )

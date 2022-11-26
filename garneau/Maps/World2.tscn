@@ -58,7 +58,3 @@ margin_right = 299.0
 margin_bottom = 512.0
 rect_pivot_offset = Vector2( 397, -109 )
 text = "World 2 - BackGround"
-
-[node name="SafeZone2" parent="." instance=ExtResource( 6 )]
-visible = true
-position = Vector2( 591.766, 289.91 )

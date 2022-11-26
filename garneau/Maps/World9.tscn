@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/foreground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Monster/Spikes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Items/LockedDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Items/HeartMaker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Areas/SafeZone.tscn" type="PackedScene" id=7]
 
 [node name="World8" type="Node2D"]
 
@@ -28,11 +29,11 @@ next_world = 10
 position = Vector2( 248, 456 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 152.0
-margin_top = 504.0
-margin_right = 416.0
-margin_bottom = 576.0
-text = "Les <Particles2D> sont utilisées pour créer des effets spéciaux comme le feu, la boucane et la pluie"
+margin_left = 125.0
+margin_top = 496.0
+margin_right = 385.0
+margin_bottom = 568.0
+text = "Ce piège et les coeurs utilisent des <Aread2D> pour détecter quand les objets entrent et sortent de leurs zones."
 
 [node name="WorldText" type="RichTextLabel" parent="."]
 margin_left = 144.867
@@ -40,7 +41,7 @@ margin_top = 351.432
 margin_right = 298.867
 margin_bottom = 389.432
 rect_pivot_offset = Vector2( 397, -109 )
-text = "World 8 - Particles"
+text = "World 9 - Area2D"
 
 [node name="Spikes" parent="." instance=ExtResource( 4 )]
 position = Vector2( 288, 472 )
@@ -53,3 +54,6 @@ position = Vector2( 320, 472 )
 
 [node name="HeartMaker" parent="." instance=ExtResource( 6 )]
 position = Vector2( 464, 488 )
+
+[node name="SafeZone" parent="." instance=ExtResource( 7 )]
+position = Vector2( 166.293, 259.03 )
